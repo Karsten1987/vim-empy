@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead *.em setfiletype empy
+autocmd BufNewFile,BufRead *.em setfiletype em
