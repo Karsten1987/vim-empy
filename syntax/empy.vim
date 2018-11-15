@@ -1,25 +1,18 @@
 syntax keyword empyTodos TODO XXX FIXME NOTE
 
 " Match language specific keywords
-syntax keyword empyKeywords
-      \ @
-      \ @@
-      \ @[
-      \ ]
-      \ ]@
-      \ @{
-      \ @}
+"syntax keyword empyConditionals if else switch case for
+syntax match empyConditionals '\v\@\[\s*if.*\]\@'
+syntax match empyConditionals '\v\@\[\s*for.*\]\@'
+syntax match empyConditionals '\v\@\[\s*end if.*\]\@'
+syntax match empyConditionals '\v\@\[\s*end for.*\]\@'
+syntax match empyConditionals '\v\@\[\s*else.*\]\@'
 
-" Match all Swift number types
-syntax match swiftNumber "\v<\d+>"
-syntax match swiftNumber "\v<\d+\.\d+>"
-syntax match swiftNumber "\v<\d*\.?\d+([Ee]-?)?\d+>"
-syntax match swiftNumber "\v<0x\x+([Pp]-?)?\x+>"
-syntax match swiftNumber "\v<0b[01]+>"
-syntax match swiftNumber "\v<0o\o+>"
+syntax match empyComment "#.*$"
 
-syntax region empyComment start="\"" end="\n"
+syntax match empySubs '\v\@\(.{-}\)'
 
 highlight default link empyTodos Todo
 highlight default link empyComments Comment
-highlight default link empyKeywords Keyword
+highlight default link empySubs Constant
+highlight default link empyConditionals Conditional
